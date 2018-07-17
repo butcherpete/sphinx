@@ -1,0 +1,159 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Quick Start &#8212; test-bed 0 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
+<p>What?</p>
+<dl class="get">
+<dt id="get--users-(int-user_id)-posts-(tag)">
+<code class="descname">GET </code><code class="descname">/users/</code><span class="sig-paren">(</span><em class="property">int: </em><em>user_id</em><span class="sig-paren">)</span><code class="descname">/posts/</code><span class="sig-paren">(</span><em>tag</em><span class="sig-paren">)</span><a class="headerlink" href="#get--users-(int-user_id)-posts-(tag)" title="Permalink to this definition">¶</a></dt>
+<dd><p>The posts tagged with <cite>tag</cite> that the user (<cite>user_id</cite>) wrote.</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/users/123/posts/web</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">example.com</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json, text/javascript</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Vary</span><span class="o">:</span> <span class="l">Accept</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;post_id&quot;</span><span class="o">:</span> <span class="mi">12345</span><span class="p">,</span>
+    <span class="s2">&quot;author_id&quot;</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span>
+    <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;server&quot;</span><span class="p">,</span> <span class="s2">&quot;web&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;subject&quot;</span><span class="o">:</span> <span class="s2">&quot;I tried Nginx&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;post_id&quot;</span><span class="o">:</span> <span class="mi">12346</span><span class="p">,</span>
+    <span class="s2">&quot;author_id&quot;</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span>
+    <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;html5&quot;</span><span class="p">,</span> <span class="s2">&quot;standards&quot;</span><span class="p">,</span> <span class="s2">&quot;web&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;subject&quot;</span><span class="o">:</span> <span class="s2">&quot;We go to HTML 5&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><ul class="first simple">
+<li><strong>sort</strong> – one of <code class="docutils literal notranslate"><span class="pre">hit</span></code>, <code class="docutils literal notranslate"><span class="pre">created-at</span></code></li>
+<li><strong>offset</strong> – offset number. default is 0</li>
+<li><strong>limit</strong> – limit number. default is 30</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Request Headers:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first simple">
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – the response content type depends on
+<em class="mailheader">Accept</em> header</li>
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc7235#section-4.2">Authorization</a> – optional OAuth token to authenticate</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Response Headers:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><ul class="first simple">
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-3.1.1.5">Content-Type</a> – this depends on <em class="mailheader">Accept</em>
+header of request</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Status Codes:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – no error</li>
+<li><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – there’s no user</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="installation.html" title="previous chapter">Installation</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/usage/quickstart.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Todd Smith.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/usage/quickstart.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
